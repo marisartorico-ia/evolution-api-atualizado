@@ -158,7 +158,11 @@ async function bootstrap() {
     Sentry.setupExpressErrorHandler(app);
   }
   
-  console.log('PORTA FINAL USADA:', httpServer.PORT);
+
+  const portaRender = Number(process.env.PORT) || 3000;
+httpServer.PORT = portaRender;
+
+console.log('PORTA FINAL USADA (Render):', portaRender);
 
   server.listen(httpServer.PORT, () => logger.log(httpServer.TYPE.toUpperCase() + ' - ON: ' + httpServer.PORT));
 
