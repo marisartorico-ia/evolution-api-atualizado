@@ -63,6 +63,11 @@ async function bootstrap() {
     json({ limit: '136mb' }),
     compression(),
   );
+  
+  const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  logger.log(`🚀 Server is running on port ${port}`);
+});
 
   app.set('view engine', 'hbs');
   app.set('views', join(ROOT_DIR, 'views'));
